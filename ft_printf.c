@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:32:24 by toto              #+#    #+#             */
-/*   Updated: 2024/11/18 10:42:40 by toto             ###   ########.fr       */
+/*   Updated: 2024/11/18 13:38:56 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ void	ft_check_option(char c, va_list args, int *count)
 	else if (c == 'p')
 		ft_print_pointer(va_arg(args, unsigned long), count);
 	else if (c == 'd')
-		ft_putnbr_count_int(va_arg(args, int), count);
+		ft_putnbr_count(va_arg(args, int), count);
 	else if (c == 'i')
-		ft_putnbr_count_long(va_arg(args, long), count);
+		ft_putnbr_count(va_arg(args, int), count);
 	else if (c == 'x')
-		ft_putnbr_hexa_lowercase((long)va_arg(args, int), count);
+		ft_putnbr_hexa_lowercase(va_arg(args, int), count);
 	else if (c == 'X')
-		ft_putnbr_hexa_uppercase((long)va_arg(args, int), count);
+		ft_putnbr_hexa_uppercase(va_arg(args, int), count);
+	else if (c == 'u')
+		ft_putnbr_count_unsigned(va_arg(args, unsigned int), count);
 	else if (c == '%')
 	{
 		ft_putchar('%');
@@ -63,7 +65,7 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		i;
-	int		*count;
+	int		count;
 
 	va_start(args, str);
 	count = 0;
