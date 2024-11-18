@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 18:16:33 by toto              #+#    #+#             */
-/*   Updated: 2024/11/18 12:08:10 by toto             ###   ########.fr       */
+/*   Updated: 2024/11/18 15:07:48 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	ft_putstr_count(char *str, int *count)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (str == NULL)
+		(*count) += write(1, "(null)", 6);
+	while (str != NULL && str[i] != '\0')
 	{
 		(*count) += write(1, &str[i], 1);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:32:24 by toto              #+#    #+#             */
-/*   Updated: 2024/11/18 13:38:56 by toto             ###   ########.fr       */
+/*   Updated: 2024/11/18 17:42:41 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,13 @@ void	ft_parse_printf(const char *str, va_list args, int *count)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-		{
 			ft_check_option(str[++i], args, count);
-			i++;
-		}
-		if (str[i] != '\0')
+		else
 		{
 			ft_putchar(str[i]);
 			(*count)++;
-			i++;
 		}
+		i++;
 	}
 }
 
@@ -64,7 +61,6 @@ void	ft_check_option(char c, va_list args, int *count)
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int		i;
 	int		count;
 
 	va_start(args, str);
@@ -76,10 +72,6 @@ int	ft_printf(const char *str, ...)
 
 // void main()
 // {
-// 	ft_printf("bonjour a tous\n");
-// 	int *ptr;
-// 	int d = 123;
-// 	printf("%d\n", ft_printf("%X", d));
-// 	ft_printf("\n");
-// 	printf("%d\n", printf("%X", d));
+// 	printf("size : %d \n", ft_printf(" %x ", -1));
+// 	printf("size : %d", printf(" %x ", -1));
 // }

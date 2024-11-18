@@ -6,7 +6,7 @@
 /*   By: toto <toto@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 20:39:05 by toto              #+#    #+#             */
-/*   Updated: 2024/11/18 12:08:09 by toto             ###   ########.fr       */
+/*   Updated: 2024/11/18 16:29:58 by toto             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	ft_print_pointer(unsigned long ptr, int *count)
 	i = 0;
 	if (!ptr)
 		(*count) += write(1, "(nil)", 5);
-	if (ptr == 0)
-		(*count) += write(1, "0x0", 3);
-	while (ptr > 0)
+	if (ptr != 0)
 	{
-		stock[i++] = hexa[ptr % 16];
-		ptr = ptr / 16;
+		while (ptr > 0)
+		{
+			stock[i++] = hexa[ptr % 16];
+			ptr = ptr / 16;
+		}
+		(*count) += write(1, "0x", 2);
+		while (i > 0)
+			(*count) += write(1, &stock[--i], 1);
 	}
-	(*count) += write(1, "0x", 2);
-	while (i > 0)
-		(*count) += write(1, &stock[--i], 1);
 }
